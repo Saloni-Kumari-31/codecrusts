@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeCrust</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        /* First Page with Background */
+        .first-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: url('s1.jpg') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            width: 100%;
+            min-height: 100vh;
+            color: white;
+            text-align: center;
+            /* padding: 20px; */
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .navbar .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #87CEEB;
+            text-shadow: 0 0 10px #87CEEB;
+        }
+        @media (max-width: 600px) {
+            .navbar .logo {
+                font-size: 1.2rem;
+            }
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            color: #87CEEB;
+            cursor: pointer;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links li {
+            display: inline-block;
+            position: relative;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 300;
+            color: #87CEEB;
+            padding: 8px 15px;
+            transition: all 0.3s ease-in-out;
+        }
+        .nav-links a:hover {
+            color: #FFD700;
+            text-shadow: 0 0 10px #FFD700;
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(0, 0, 0, 0.9);
+            width: 150px;
+            display: none;
+            flex-direction: column;
+            text-align: left;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .nav-links li:hover .dropdown {
+            display: flex;
+        }
+        .dropdown a {
+            padding: 10px;
+            color: white;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: block;
+            transition: 0.3s;
+        }
+        .dropdown a:hover {
+            background: #FFD700;
+            color: black;
+        }
+        .content {
+        max-width: 800px;
+        width: 90%;
+        position: absolute;
+        top: 100px; /* Moves text & button closer to the navbar */
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        /* margin-bottom: 40px; */
+    }
+        /* .content {
+            max-width: 800px;
+            width: 90%;
+            margin-top: 80px;
+        } */
+        .quote-section {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-shadow: 0 0 5px #FFD700;
+        }
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background-color: #FFD700;
+            margin-left: 5px;
+            animation: blink 0.6s infinite;
+        }
+        .logotext{
+        text-decoration: none;
+        color:#87CEEB;}
+        @keyframes blink {
+            50% {
+                background-color: transparent;
+            }
+        }
+        .winner-text {
+            display: inline-block;
+            margin-top: 30px;
+            margin-bottom:10px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: white;
+            background: linear-gradient(45deg, #aab0da, #6b49f1);
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 0 10px rgba(255, 165, 0, 0.8);
+            transition: all 0.3s ease-in-out;
+        }
+        .winner-text:hover {
+            background: linear-gradient(45deg, #6b49f1, #aab0da);
+            box-shadow: 0 0 15px rgba(255, 165, 0, 1);
+            transform: scale(1.05);
+        }
+        .pre-register-btn {
+            display: inline-block;
+            margin-top: 30px;
+            margin-bottom:300px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: white;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 0 10px rgba(255, 165, 0, 0.8);
+            transition: all 0.3s ease-in-out;
+        }
+        .pre-register-btn:hover {
+            background: linear-gradient(45deg, #FFA500, #FFD700);
+            box-shadow: 0 0 15px rgba(255, 165, 0, 1);
+            transform: scale(1.05);
+        }.container {
+            width: 90%;
+            max-width: 800px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        .contact-section, .form-section {
+            padding: 50px 20px;
+            background: #f8f9fa;
+            text-align: center;
+        }
+        .contact-section h2, .form-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .contact-info {
+            font-size: 1.1rem;
+            color: #555;
+        }
+        .contact-info p {
+            margin: 10px 0;
+        }
+        .google-form {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+      
+       
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+            .contact-info {
+                font-size: 1rem;
+            }
+            .google-form {
+                height: 500px;
+            }
+        }
+        @media (max-width: 480px) {
+        
+            .contact-info p {
+                font-size: 0.9rem;
+            }
+            .google-form {
+                height: 400px;
+            }
+        }
+        .milestone-box {
+            background-color: rgb(28, 23, 119);
+            background-image: url("sih.png");
+            padding: 30px;
+            /* margin-bottom: 50px; */
+            /* border-radius: 10px; */
+            margin:  auto ;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        
+        .milestone-box h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            /* text-shadow: 0 0 10px #fff; */
+            color:#f75700;
+            text-align: center;
+        }
+        .milestone-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .milestone {
+            /* background: rgba(255, 255, 255, 0.2); */
+            padding: 15px 20px;
+            border-radius: 8px;
+            flex: 1;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            max-width: 400px;
+            color:white;
+        }
+        .milestone b {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 5px;
+            color:white
+        }
+        .footer {
+            background: white;
+            color: black;
+            text-align: center;
+            padding: 15px 0;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+        /* Styling for the dropdown arrow */
+            .nav-links li .arrow {
+                margin-left: 5px;
+                font-size: 0.8rem;
+                color: #87CEEB; /* Sky blue color */
+                transition: transform 0.3s ease-in-out, color 0.3s;
+            }
+
+            /* Rotate arrow when dropdown is open */
+            .nav-links li:hover .arrow {
+                transform: rotate(180deg);
+                color: #FFD700; /* Golden color on hover */
+            }
+
+        @media (max-width: 900px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                flex-direction: column;
+                text-align: center;
+                display: none;
+            }
+            .nav-links.active {
+                display: flex;
+                animation: fadeIn 0.3s ease-in-out;
+            }
+            .nav-links li {
+                display: block;
+                width: 100%;
+                padding: 10px;
+            }
+            /* Ensure dropdown displays properly in mobile view */
+            .nav-links .dropdown {
+                position: relative;
+                width: 100%;
+                display: none;
+            }
+            .nav-links li:hover .dropdown {
+                display: block;
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Sections without background image */
+        .about-section, .new-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            width: 100%;
+        }
+        .milestone section{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* padding: 50px 20px; */
+            /* background: rgba(0, 0, 0, 0.8); */
+            color: white;
+            width: 100%;
+        }
+        .about-container, .new-container {
+            max-width: 800px;
+            width: 90%;
+        }
+        .about-logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        .about-content h2, .new-content h2 {
+            font-size: 2rem;
+            color: #FFD700;
+            text-shadow: 0 0 5px #FFD700;
+        }
+        .about-content p, .new-content p {
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        @media (max-width: 600px) {
+            .about-content h2, .new-content h2 {
+                font-size: 1.5rem;
+            }
+            .about-content p, .new-content p {
+                font-size: 0.9rem;
+            }
+            .about-logo {
+                width: 60px;
+            }
+        }
+     
+        .slider-container {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            height: 400px;
+            overflow: hidden;
+            margin: auto;
+            margin-top: 300px;
+            display: flex;
+            align-items: center;
+        }
+     
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            border-radius: 15px;
+        }
+        .slide {
+            flex: 0 0 calc(100% / 3);
+            padding: 10px;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;}
+    
+        .btn {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 24px;
+            height: 50px;
+            width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10; /* Ensure buttons appear above images */
+        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+        @media (max-width: 900px) {
+            .slide { flex: 0 0 50%; }
+        }
+
+        @media (max-width: 600px) {
+            .slide { flex: 0 0 100%; }
+        }
+        
+        .carousel-container2 {
+            text-align: center;
+            width: 80%;
+            max-width: 1200px;
+            position: relative;
+            /* margin-top: 0px; */
+            margin:auto;
+        }
+
+        .title {
+        font-family: montserratbold;
+        font-size: 34px;
+        margin-top:25px;
+        color: #f75700;
+        letter-spacing: 0.04em;
+    text-align: center;}
+
+
+
+        .subtitle {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            text-align: center;
+        }
+
+        /* Carousel Wrapper */
+        .carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding: 10px;
+        }
+
+        /* Carousel */
+        .carousel {
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+            width: 100%;
+        }
+ 
+
+        .carousel-item {
+            flex: 0 0 32%; /* 3 items per view */
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin: 10px;
+            transition: transform 0.3s ease;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border:1px solid orangered;
+            display: flex;
+   
+        }
+
+        .carousel-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Images */
+       
+        .carousel-item img {
+                vertical-align: middle;
+                border-style: none;
+                width:80px;
+                height:auto;
+                margin-bottom:20px;
+                margin:auto;
+        }
+
+        
+        .carousel-item h3 {
+            font-family: 'montserratbold';
+            font-size: 22px;
+            color: #002449;
+            min-height: 60px; /* Ensures all titles have the same height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+      
+        .carousel-item p {
+            font-family: 'montserratmedium';
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 25px;
+            color: #000000;
+            /* vertical-align: middle; */
+            text-transform: none;}
+
+        /* Navigation Buttons */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(45deg, #ff6600, #ffcc00);
+            border: none;
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease, background 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: linear-gradient(45deg, #ff3300, #ff9900);
+            transform: scale(1.1);
+        }
+
+        #prevBtn {
+            left: -60px;
+        }
+
+        #nextBtn {
+            right: -60px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .carousel-item {
+                flex: 0 0 48%; /* Show 2 items on medium screens */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .carousel-item {
+                flex: 0 0 100%; /* Show 1 item per screen on small screens */
+            }
+
+            #prevBtn {
+                left: 10px;
+            }
+
+            #nextBtn {
+                right: 10px;
+            }
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- First Page with Background -->
+    <div id="home" class="first-page">
+       
+        <div class="navbar">
+            <div class="logo" ><a class="logotext" href="index.html" >⚡ ＣＯＤΞＣＲＵＳＴＳ </a></div>
+            <div class="menu-toggle">☰</div>
+            
+            <ul class="nav-links">
+                <li>
+                    <a href="#students">STUDENTS <span class="arrow">▼</span></a>
+                    <div class="dropdown">
+                        <a href="https://forms.gle/zAKpaQp75jNWf6vD9" target="_blank">STUDENT REGISTRATION</a>
+                        <a href="rules.html" target="_blank">RULES</a>
+                        <a href="update.html" target="_blank">KEEP US UPDATE</a>
+                    </div>
+                </li>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </div>
+       
+        <div class="content">
+                <div class="quote-section">
+                    <span class="quote-text"></span><span class="cursor"></span>
+                </div>
+                <br>
+                <a href="working.html" target="_blank" class="pre-register-btn">Pre-register for the 2025 Challenge Now</a>
+        </div>
+        <div class="slider-container">
+            <button class="btn prev" onclick="prevSlide()">&#10094;</button>
+            <div class="slider">
+                <div class="slide"><img src="SLIDE.png" alt="Image 4"></div>
+                <div class="slide"><img src="SLIDE2.png" alt="Image 5"></div>
+                <div class="slide"><img src="SLIDE3.png" alt="Image 6"></div>
+
+                
+                <div class="slide"><img src="ready.png" alt="Image 7"></div>
+                <div class="slide"><img src="set.png" alt="Image 8"></div>
+                <div class="slide"><img src="code.png" alt="Image 9"></div>
+
+                <div class="slide"><img src="hackzilla.jpg" alt="Image 1"></div>
+                <div class="slide"><img src="mail4.jpg" alt="Image 2"></div>
+                <div class="slide"><img src="mail3.jpg" alt="Image 3"></div>
+                
+            </div>
+            <button class="btn next" onclick="nextSlide()">&#10095;</button>
+        </div>
+         <a class="winner-text" href="winners.html" target="_blank">
+            Previous Champions ➔
+        </a>
+    </div>
+
+    <!-- About Section (On next page without background) -->
+    <section id="about" class="about-section">
+        
+        <div class="about-container">
+            <br><br><br>
+            <div class="about-content">
+                <!-- <img src="" alt="Scholar Logo" class="about-logo"> -->
+                <h2>Inspiring the Next Generation</h2>
+                <p>
+                    At CodeCrust, we believe in empowering students with the knowledge and skills they need to excel in the digital age.
+                    Our platform provides hands-on learning, coding challenges, and mentorship to help students innovate, create, and succeed.
+                </p>
+                <p>
+                    "The future belongs to those who learn, adapt, and innovate." Join us and take your first step towards a brighter tomorrow!
+                </p>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="new-section" class="new-section">
+        <div class="new-container">
+            <div class="new-content">
+                <h2>Empowerment Through Technology</h2>
+                <p>
+                    Our mission is to provide students with the resources and guidance needed to turn their ideas into reality.
+                    Through workshops, hackathons, and mentorship programs, we strive to create an environment where students
+                    can grow, collaborate, and make a difference in the world.
+                </p>
+                <p>
+                    "Technology is best when it brings people together." Join CodeCrust in shaping the future of innovation.
+                </p>
+            </div>
+        </div> 
+    </section>
+    <section id="new-section" class="milestone-section">
+    <div class="milestone-box">
+        <h2>CODECRUSTS MILESTONES</h2>
+        <div class="milestone-container">
+            <div class="milestone"><b>300+</b>Participating Students</div>
+            <div class="milestone"><b>100+</b>CodeCrust Alumni Network</div>
+            <div class="milestone"><b>1800+</b>Total Problem Statements</div>
+        </div>
+    </div>
+</section>
+<section class="carousel-container2">
+    <h2 class="title">THEMES</h2>
+    <p class="subtitle">No problem is too big... No idea is too small</p>
+    
+    <div class="carousel-wrapper">
+        <button id="prevBtn" class="nav-btn">&#10094;</button>
+
+        <div class="carousel">
+            <div class="carousel-track">
+                <div class="carousel-item">
+                    <img src="smartautomation.png" alt="">
+                    <h3>SMART AUTOMATION</h3>
+                    <p>Ideas focused on the intelligent use of resources for transforming and advancements of technology with combining the artificial intelligence to explore more various sources and get valuable insights.</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="heritageandculture.png" alt="">
+                    <h3>HERITAGE & CULTURE</h3>
+                    <p>Ideas that showcase the rich cultural heritage and traditions of India.</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="fitness.png" alt="">
+                    <h3>FITNESS & SPORTS</h3>
+                    <p>Ideas that can boost fitness activities and assist in keeping fit.</p>  
+                </div>
+
+                <div class="carousel-item">
+                    <img src="healthcare.png" alt="">
+                    <h3>MEDTECH/BIOTECH/ HEALTHTECH</h3>
+                    <p>Cutting-edge technology in these sectors continues to be in demand. Recent shifts in healthcare trends, growing populations also present an array of opportunities for innovation.</p>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="agri5.png" alt="">
+                    <h3>AGRICULTURE, FOODTECH &amp; RURAL DEVELOPMENT</h3>
+                    <p>Developing solutions, keeping in mind the need to enhance the primary sector of India - Agriculture and to manage and process our agriculture produce.</p>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="vehicle6.png" alt="">
+                    <h3>SMART VEHICLES</h3>
+                    <p>Creating intelligent devices to improve commutation sector.</p>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="transport7.png" alt="">
+                    <h3>TRANSPORTATION & LOGISTICS</h3>
+                    <p>Submit your ideas to address the growing pressures on the city’s resources, transport networks, and logistic infrastructure.</p>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="drone8.png" alt="">
+                    <h3>ROBOTICS AND DRONES</h3>
+                    <p>There is a need to design drones and robots that can solve some of the pressing challenges of India such as handling medical emergencies, search and rescue operations, etc.</p>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="toy9.png" alt="">
+                    <h3>TOYS & GAMES</h3>
+                    <p>Challenge your creative mind to conceptualize and develop unique toys and games based on our civilization, history, and culture etc.</p>
+                </div>
+                
+               
+            </div>
+        </div>
+
+        <button id="nextBtn" class="nav-btn">&#10095;</button>
+    </div>
+</section>
+    
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <p>Email: contact@codecrust.com</p>
+                <p>Phone: +123 456 7890</p>
+                <p>Address: 123 Code Street, Tech City</p>
+                <p>
+                    <strong>Have a query?</strong> 
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf6IdkcYQdJNChnbYWRU0C_D6aW33g2d7J5b4AKwAVXhE-UBw/viewform" target="_blank" 
+                       style="color: #007bff; text-decoration: none; font-weight: 600;">
+                       Fill out our form here!
+                    </a>
+                </p>
+            </div>
+        </div>
+    </section>
+   
+    <script>
+        
+        document.querySelector(".menu-toggle").addEventListener("click", function() {
+            document.querySelector(".nav-links").classList.toggle("active");
+        });
+    
+        // Dropdown toggle for mobile view
+        document.querySelectorAll(".nav-links li").forEach(item => {
+            item.addEventListener("click", function(event) {
+                let dropdown = this.querySelector(".dropdown");
+                if (dropdown) {
+                    event.preventDefault();
+                    dropdown.classList.toggle("show");
+                }
+            });
+        });
+    
+        const text = "Innovate, Code, and Elevate with CodeCrusts!";
+        const quoteText = document.querySelector(".quote-text");
+        let index1 = 0;
+    
+        function typeEffect() {
+            if (index1 < text.length) {
+                quoteText.innerHTML += text.charAt(index1);
+                index1++;
+                setTimeout(typeEffect, 100);
+            }
+        }
+        document.querySelectorAll(".dropdown a").forEach(item => {
+        item.addEventListener("click", function(event) {
+        event.stopPropagation(); // Prevents the dropdown from interfering
+       });
+      }); 
+      window.onload = typeEffect;
+      const track = document.querySelector(".carousel-track");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+
+        let index = 0;
+        const itemsPerSlide = 3;
+        const totalItems = document.querySelectorAll(".carousel-item").length;
+        const totalSlides = Math.ceil(totalItems / itemsPerSlide);
+
+        function updateCarousel() {
+            const offset = index * 100 / itemsPerSlide;
+            track.style.transform = `translateX(-${offset}%)`;
+        }
+
+        nextBtn.addEventListener("click", () => {
+            index = (index + 1) % totalSlides;
+            updateCarousel();
+        });
+
+        prevBtn.addEventListener("click", () => {
+            index = (index - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        });
+
+        setInterval(() => {
+            index = (index + 1) % totalSlides;
+            updateCarousel();
+        }, 2000);
+        let currentIndex = 0;
+        const slidesToShow = 3;
+        const slides = document.querySelectorAll(".slide");
+        const totalSlides2 = slides.length;
+        const slider = document.querySelector(".slider");
+
+        function showSlide(index) {
+            if (index >= Math.ceil(totalSlides2 / slidesToShow)) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = Math.ceil(totalSlides2 / slidesToShow) - 1;
+            } else {
+                currentIndex = index;
+            }
+            const movePercentage = (100 / slidesToShow) * currentIndex * slidesToShow;
+            slider.style.transform = `translateX(-${movePercentage}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+
+        setInterval(() => nextSlide(), 10000);
+    </script>
+        
+       
+    </script>
+</body>
+</html>
