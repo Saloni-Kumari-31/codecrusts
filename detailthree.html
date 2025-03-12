@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeCrust</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: url('s1.jpg') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            width: 100%;
+            min-height: 100vh;
+            color: white;
+            text-align: center;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #87CEEB;
+            text-shadow: 0 0 10px #87CEEB;
+            white-space: nowrap;
+        }
+        .nav-links a:hover {
+            color: #FFD700;
+            text-shadow: 0 0 10px #FFD700;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            color: #87CEEB;
+            cursor: pointer;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links li {
+            position: relative;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-size: 1rem;
+            color: #87CEEB;
+            padding: 8px 15px;
+            transition: all 0.3s;
+        }
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(0, 0, 0, 0.9);
+            width: 150px;
+            display: none;
+            flex-direction: column;
+            text-align: left;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .nav-links li:hover .dropdown {
+            display: flex;
+        }
+        .dropdown a {
+            padding: 10px;
+            color: white;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: block;
+            transition: 0.3s;
+        }
+        .dropdown a:hover {
+            background: #FFD700;
+            color: black;
+        }
+        @media (max-width: 900px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                flex-direction: column;
+                text-align: center;
+                display: none;
+            }
+            .nav-links.active {
+                display: flex;
+                animation: fadeIn 0.3s ease-in-out;
+            }
+            .nav-links li {
+                display: block;
+                width: 100%;
+                padding: 10px;
+            }
+            /* Ensure dropdown displays properly in mobile view */
+            .nav-links .dropdown {
+                position: relative;
+                width: 100%;
+                display: none;
+            }
+            .nav-links li:hover .dropdown {
+                display: block;
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+    
+       
+        .buttons button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease-in-out;
+        }
+    
+        .content {
+            padding: 100px 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+        .box {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            margin-top: 20px;
+        }
+        .box h2, .box h3 {
+            color: #FFD700;
+            font-size:1.6rem;
+        }
+        .box p, .box ul {
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        .box ul {
+            list-style: none;
+            padding: 0;
+        }
+        .box ul li {
+            margin: 5px 0;
+        }
+        .back-btn {
+            margin-top: 20px;
+            padding: 10px 15px;
+            border: none;
+            background: #FFD700;
+            color: black;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s ease-in-out;
+        }
+        .back-btn:hover {
+            background: #f5c518;
+        }
+        .back-btn2 {
+            margin-top: 20px;
+            padding: 5px 5px;
+            text-decoration: none;
+            border: none;
+            background: #FFD700;
+            color: black;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s ease-in-out;
+        }
+        .back-btn2:hover {
+            background: #f5c518;
+        }
+
+
+    
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo"><a href="index.html" style="text-decoration: none; color: #87CEEB;">⚡ ＣＯＤΞＣＲＵＳＴＳ</a></div>
+        <div class="menu-toggle">☰</div>
+        <ul class="nav-links">
+            <li>
+                <a href="#students">STUDENTS <span class="arrow">▼</span></a>
+                <div class="dropdown">
+                    <a href="https://forms.gle/zAKpaQp75jNWf6vD9" target="_blank">STUDENT REGISTRATION</a>
+                    <a href="rules.html">RULES</a>
+                    <a href="update.html">KEEP US UPDATE</a>
+                </div>
+            </li>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="index.html#about">ABOUT</a></li>
+            <li><a href="index.html#contact">CONTACT</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="box">
+            <h2>Hackathon Details</h2>
+            <p><strong>Event Name:</strong> Hackzilla</p>
+            <p><strong>Date:</strong> May 18, 2025</p>
+            <p><strong>Registration Fee:</strong> $79</p>
+            <p><strong>Location:</strong> Virtual</p>
+        </div>
+        <div class="box">
+            <h3>Highlights</h3>
+            <ul>
+                <li>💡 Innovate & develop tech solutions</li>
+                <li>🏆 Exciting prizes & mentorship</li>
+                <li>🚀 Showcase your creativity</li>
+            </ul>
+        </div>
+        <div class="box">
+            <h3>Prizes</h3>
+            <ul>
+                <li>🥇 1st Place: $1500 + Internship Opportunity + Certification</li>
+                <li>🥈 2nd Place: Certification + Mentorship Session</li>
+                <li>🥉 3rd Place: Certification + Exclusive Perks</li>
+                <li>🎖️ Certification for Runnerup</li>
+            </ul>
+        </div>
+        <div class="box">
+           
+            <p>Secure your spot and join the coding marathon! Click below:</p>
+            <p><a class="back-btn2" href="https://docs.google.com/forms/d/e/1FAIpQLSf6IdkcYQdJNChnbYWRU0C_D6aW33g2d7J5b4AKwAVXhE-UBw/viewform?usp=sharing" target="_blank" >Register Now</a></p>
+        </div>
+        
+        <button class="back-btn" onclick="window.location.href='working.html'">Back to Home</button>
+    </div>
+    <script>
+        document.querySelector(".menu-toggle").addEventListener("click", function() {
+            document.querySelector(".nav-links").classList.toggle("active");
+        });
+    </script>
+</body>
+</html>
