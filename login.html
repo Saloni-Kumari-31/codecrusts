@@ -14,7 +14,7 @@
             font-family: 'Poppins', sans-serif;
         }
         body {
-            background: url('b.jpg') no-repeat center center;
+            background: url('s3.jpg') no-repeat center center;
             background-size: cover;
             background-attachment: fixed;
             width: 100%;
@@ -159,7 +159,8 @@
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
-            width: 350px;
+            width: 450px;
+            /* height:450px; */
             text-align: center;
             margin-top: 80px;
             animation: bounce-in 0.5s ease-in-out;
@@ -207,25 +208,56 @@
         button:hover {
             background: #c70039;
         }
+        .login-container {
+    width: 500px;
+    padding: 40px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #1e1e2f, #283655);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7);
+}
+
+        .login-container h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #ff5733, #c70039);
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #c70039, #ff5733);
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
     <div class="navbar">
-        <div class="logo"><a href="#" style="text-decoration: none; color: #87CEEB;">⚡ ＣＯＤΞＣＲＵＳＴＳ</a></div>
+        <div class="logo"><a href=".index" style="text-decoration: none; color: #87CEEB;">⚡ ＣＯＤΞＣＲＵＳＴＳ</a></div>
         <div class="menu-toggle">☰</div>
         <ul class="nav-links">
             <li>
                 <a href="#students">STUDENTS <span class="arrow">▼</span></a>
                 <div class="dropdown">
-                    <a href="https://forms.gle/zAKpaQp75jNWf6vD9">STUDENT REGISTRATION</a>
-                    <a href="index.html">RULES</a>
-                    <a href="#">LEARN TO CODE</a>
-                    <a href="#">KEEP US UPDATE</a>
+                    <a href="https://forms.gle/zAKpaQp75jNWf6vD9" target="_blank">STUDENT REGISTRATION</a>
+                    <a href="./rules">RULES</a>
+                    <a href="./update">KEEP US UPDATE</a>
                 </div>
             </li>
-            <li><a href="#home">HOME</a></li>
-            <li><a href="#about">ABOUT</a></li>
-            <li><a href="#contact">CONTACT</a></li>
+            <li><a href="./index">HOME</a></li>
+            <li><a href="./index#about">ABOUT</a></li>
+            <li><a href="./index#contact">CONTACT</a></li>
         </ul>
     </div>
 
@@ -233,7 +265,11 @@
         <h2>Login</h2>
         <form id="loginForm">
             <input type="email" id="em1" placeholder="Email" required>
-            <input type="password" id="pass1" placeholder="Password" required>
+            <!-- <input type="password" id="pass1" placeholder="Password" required> -->
+            <div style="position: relative;">
+                <input type="password" id="pass1" placeholder="Password" required>
+                <span id="togglePassword" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: white;">👁️</span>
+            </div>
             <button type="submit" id="loginBtn">Login</button>
         </form>
         <p id="message" style="color: red;"></p>
@@ -246,6 +282,16 @@
         document.querySelector(".menu-toggle").addEventListener("click", function() {
             document.querySelector(".nav-links").classList.toggle("active");
         });
+        document.getElementById("togglePassword").addEventListener("click", function() {
+        let passwordInput = document.getElementById("pass1");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            this.textContent = "🙈"; // Change icon to indicate hiding
+        } else {
+            passwordInput.type = "password";
+            this.textContent = "👁️"; // Change back to eye icon
+        }
+    });
     </script> 
 </body>
 </html>
