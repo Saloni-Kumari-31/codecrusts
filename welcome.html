@@ -1,333 +1,366 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Page</title>
-    <link rel="icon" type="image/png" href="bold_lightning_bolt.png">
-    <style>
-      
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-        body {
-            background: url('b.jpg') no-repeat center center;
-            background-size: cover;
-            background-attachment: fixed;
-            width: 100%;
-            min-height: 100vh;
-            color: black;
-            text-align: center;
-        }
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.8);
-        }
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            color: #87CEEB;
-            text-shadow: 0 0 10px #87CEEB;
-            white-space: nowrap;
-        }
-        .nav-links a:hover {
-            color: #FFD700;
-            text-shadow: 0 0 10px #FFD700;
-        }
-        .menu-toggle {
-            display: none;
-            font-size: 2rem;
-            color: #87CEEB;
-            cursor: pointer;
-        }
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-        .nav-links li {
-            position: relative;
-        }
-        .nav-links a {
-            text-decoration: none;
-            font-size: 1rem;
-            color: #87CEEB;
-            padding: 8px 15px;
-            transition: all 0.3s;
-        }
-        .dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: rgba(0, 0, 0, 0.9);
-            width: 150px;
-            display: none;
-            flex-direction: column;
-            text-align: left;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-        .nav-links li:hover .dropdown {
-            display: flex;
-        }
-        .dropdown a {
-            padding: 10px;
-            color: white;
-            font-size: 0.9rem;
-            text-decoration: none;
-            display: block;
-            transition: 0.3s;
-        }
-        .dropdown a:hover {
-            background: #FFD700;
-            color: black;
-        }
-        @media (max-width: 900px) {
-            .menu-toggle {
-                display: block;
-            }
-            .nav-links {
-                position: absolute;
-                top: 60px;
-                left: 0;
-                width: 100%;
-                background: rgba(0, 0, 0, 0.9);
-                flex-direction: column;
-                text-align: center;
-                display: none;
-            }
-            .nav-links.active {
-                display: flex;
-                animation: fadeIn 0.3s ease-in-out;
-            }
-            .nav-links li {
-                display: block;
-                width: 100%;
-                padding: 10px;
-            }
-            /* Ensure dropdown displays properly in mobile view */
-            .nav-links .dropdown {
-                position: relative;
-                width: 100%;
-                display: none;
-            }
-            .nav-links li:hover .dropdown {
-                display: block;
-            }
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome Page</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: url('5079835.jpg') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+      width: 100%;
+      min-height: 100vh;
+      color: white;
+      text-align: center;
+    }
+    /* Navbar styling */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.8);
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #87ceeb;
+      text-shadow: 0 0 10px #87ceeb;
+      white-space: nowrap;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      color: #87ceeb;
+      cursor: pointer;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 1rem;
+      color: #87ceeb;
+      padding: 8px 15px;
+      transition: all 0.3s;
+    }
+    .nav-links a:hover {
+      color: #ffd700;
+      text-shadow: 0 0 10px #ffd700;
+    }
+    .nav-links li {
+      position: relative;
+    }
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(0, 0, 0, 0.9);
+      width: 150px;
+      display: none;
+      flex-direction: column;
+      text-align: left;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      z-index: 1100;
+    }
+    .nav-links li:hover .dropdown {
+      display: flex;
+    }
+    .dropdown a {
+      padding: 10px;
+      color: white;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: block;
+      transition: 0.3s;
+    }
+    .dropdown a:hover {
+      background: #ffd700;
+      color: black;
+    }
+    /* Header with user box placed in flow */
     .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: black;
-            color: white;
-            padding: 20px 40px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            font-size: 1.2rem;
-            position: relative;
-            margin-top: 50px;
-        }
-
-        .user-box {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 8px 15px;
-            border-radius: 10px;
-            font-size: 1rem;
-        }
-
-        .logoutBtn {
-            background: #ff4b5c;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: background 0.3s, transform 0.2s;
-        }
-
-        .logoutBtn:hover {
-            background: #d43f4a;
-            transform: scale(1.05);
-        }
-
-.dashboard-container {
-    max-width: 1400px;
-    margin: 40px auto;
-    padding: 60px;
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-    border-radius: 25px;
-    text-align: center;
-}
-
-h2, h3 {
-    color: #d43f4a;
-}
-
-.event-details, .schedule, .resources, .upload-section {
-    margin-top: 30px;
-    padding: 35px;
-    background: #fff4e0;
-    border-radius: 18px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.animated-box:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
-}
-
-.schedule ul {
-    list-style: none;
-    padding: 0;
-}
-
-.schedule li {
-    padding: 12px 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      background: black;
+      color: white;
+      padding: 20px 40px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      font-size: 1.2rem;
+      margin-top: 60px; /* extra top margin to prevent overlap with fixed navbar */
+    }
+  
+    .user-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 8px 10px;
+      border-radius: 10px;
+      font-size: 1rem;
+      color: white;
+      width: 250px;
+    }
+    .logoutBtn {
+      background: #ff4b5c;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 8px;
+      margin-top: 8px;  /* space between user info and button */
+      transition: background 0.3s, transform 0.2s;
+    }
+    .logoutBtn:hover {
+      background: #d43f4a;
+      transform: scale(1.05);
+    }
+    /* Dashboard container and event sections */
+    .dashboard-container {
+      font-size: 20px;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 60px;
+      background: rgba(240, 23, 23, 0.2);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+      border-radius: 25px;
+      text-align: center;
+    }
+    h2, h3 {
+      color: #87ceeb;
+      font-size: 30px;
+    }
+    .event-details, .schedule, .resources, .upload-section,.instructions {
+      font-size: 20px;
+      margin-top: 30px;
+      padding: 35px;
+      background: rgba(51, 15, 230, 0.2);
+      border-radius: 18px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+  
+    .animated-box:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    }
+    .schedule ul,.instructions ul {
+      list-style: none;
+      padding: 0;
+    }
+    .schedule li {
+      padding: 12px 0;
+      font-weight: bold;
+      color: white;
+    
+    }
+    .instructions li {
+      padding: 12px 0;
+      /* font-weight: bold; */
+      color: white;
+      font-size:1.2rem;
+    }
+    .instructions p{
+      font-size:1.2rem;
+    }
+    .resources a, .upload-link {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s, transform 0.2s;
+    }
+    .resources a:hover, .upload-link:hover {
+      color: #ff4b5c;
+      transform: scale(1.1);
+    }
+    /* Mobile styles for navigation */
+    @media (max-width: 900px) {
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        text-align: center;
+        display: none;
+      }
+      .nav-links.active {
+        display: flex;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+      .nav-links li {
+        display: block;
+        width: 100%;
+        padding: 10px;
+      }
+      .nav-links .dropdown {
+        position: relative;
+        width: 100%;
+        display: none;
+      }
+      .nav-links li:hover .dropdown {
+        display: block;
+      }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Mobile tweaks for screens 600px and below */
+    @media (max-width: 600px) {
+      .navbar { padding: 10px 20px; }
+      .logo { font-size: 1.4rem; }
+      .menu-toggle { font-size: 1.8rem; }
+      .nav-links a { font-size: 0.9rem; padding: 8px 10px; }
+      .header {
+        padding: 15px 20px;
+        font-size: 1rem;
+        flex-direction: column;
+        align-items: center;
+      }
+      .user-box {
+        margin-top: 10px;
+        width: 200px;
+      }
+      .logoutBtn { padding: 8px; font-size: 0.6rem; }
+      .dashboard-container {
+        padding: 20px;
+        margin: 20px 10px;
+        font-size: 16px;
+      }
+      .event-details, .schedule, .upload-section,.instructions {
+        padding: 20px;
+        font-size: 16px;
+      }
+    }
+    /* Adjustments for very small screens (480px and below) */
+    @media (max-width: 480px) {
+      .logo { font-size: 1.2rem; }
+      .nav-links a { font-size: 0.85rem; padding: 6px 8px; }
+      .dashboard-container { padding: 15px; margin: 15px 5px; }
+      h2, h3 { font-size: 24px; }
+      .event-details, .schedule, .upload-section,.instructions {
+        padding: 15px;
+        font-size: 14px;
+      }
+      .user-box {
+        width: 170px;
+        padding: 6px 8px;
+        font-size: 0.55rem;
+        margin-top: 10px;
+      }
+    }
+    .upload-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 18px;
     font-weight: bold;
-    color: #ff6f61;
-}
-
-.resources a, .upload-link {
-    color: #007bff;
+    color: white;
+    background: linear-gradient(45deg, #ff416c, #ff4b5c);
+    border-radius: 8px;
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s, transform 0.2s;
-}
+    box-shadow: 0 4px 10px rgba(255, 75, 92, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
 
-.resources a:hover, .upload-link:hover {
-    color: #ff4b5c;
+  .upload-btn:hover {
     transform: scale(1.1);
-}
-.user-box {
-            display: flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 8px 15px;
-            border-radius: 10px;
-            font-size: 1rem;
-            color: white;
-        }
-        .logoutBtn {
-            background: #ff4b5c;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 8px;
-            margin-left: 10px;
-            transition: background 0.3s, transform 0.2s;
-        }
-        .logoutBtn:hover {
-            background: #d43f4a;
-            transform: scale(1.05);
-        }
-
-        
-    </style>
+    box-shadow: 0 6px 15px rgba(255, 75, 92, 0.8);
+    color:white;
+  }
+  </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo"><a href="#" style="text-decoration: none; color: #87CEEB;">⚡ ＣＯＤΞＣＲＵＳＴＳ</a></div>
-        <div class="menu-toggle">☰</div>
-        <ul class="nav-links">
-            <li>
-                <a href="#students">STUDENTS <span class="arrow">▼</span></a>
-                <div class="dropdown">
-                    <a href="https://forms.gle/zAKpaQp75jNWf6vD9" >STUDENT REGISTRATION</a>
-                    <a href="index.html">RULES</a>
-                    <a href="#">LEARN TO CODE</a>
-                    <a href="#">KEEP US UPDATE</a>
-                </div>
-            </li>
-            <li><a href="#home">HOME</a></li>
-            <li><a href="#about">ABOUT</a></li>
-            <li><a href="#contact">CONTACT</a></li>
-        </ul>
+  <div class="navbar">
+    <div class="logo">
+      <a href="./index" style="text-decoration: none; color: #87ceeb;">⚡ ＣＯＤΞＣＲＵＳＴＳ</a>
     </div>
-    <header class="header container">
-        <h1>🚀 Hackathon 2025 🎯</h1>
-        <div class="user-box">
-            👤  <span class="userEmail" id="userEmail">User</span>
-            <button class="logoutBtn" id="logoutBtn" onclick="logout()">Logout 🔒</button>
+    <div class="menu-toggle">☰</div>
+    <ul class="nav-links">
+      <li>
+        <a href="#students">STUDENTS <span class="arrow">▼</span></a>
+        <div class="dropdown">
+          <a href="https://forms.gle/zAKpaQp75jNWf6vD9" target="_blank">STUDENT REGISTRATION</a>
+          <a href="./rules">RULES</a>
+          <a href="./update">KEEP US UPDATE</a>
         </div>
-
-    </header>
-    <!-- <div class="container">
-        <h2>Welcome!</h2>
-        <p id="userEmail"></p>
-        <button id="logoutBtn">Logout</button>
-    </div> -->
-
-    <div class="dashboard-container">
-        <h2>🎉 Welcome to the Ultimate Hackathon! 🎉</h2>
-        <p>🚀 Join the challenge, showcase your individual skills, and build something amazing! 💡</p>
-        
-        <div class="event-details animated-box">
-            <h3>📅 Event Details</h3>
-            <p><strong>Date:</strong> 🗓️ March 20, 2025</p>
-            <p><strong>Location:</strong> 🌍 Virtual (Online)</p>
-            <p><strong>Theme:</strong> 🤖 AI & Blockchain Innovation 🔗</p>
-        </div>
-        
-        <div class="schedule animated-box">
-            <h3>🕒 Schedule</h3>
-            <ul>
-                <li>🎤 <strong>10:00 AM:</strong> Virtual Kickoff & Guidelines</li>
-                <li>💻 <strong>10:30 AM:</strong> Coding Begins (Solo Development)</li>
-                <li>⏳ <strong>05:30 PM:</strong> Submission Deadline</li>
-                <li>🏆 <strong>07:00 PM:</strong> Winners Announcement & Closing Remarks</li>
-            </ul>
-        </div>
-        
-        <div class="resources animated-box">
-            <h3>📚 Resources</h3>
-            <p>📖 Check out our <a href="#">documentation</a> 📜 and <a href="#">FAQs</a>❓ to get started.</p>
-        </div>
-
-        <div class="upload-section animated-box">
-            <h3>🚀 Project Submission</h3>
-            <p>📩 Submit your project using the following link:</p>
-            <p><a href="https://forms.google.com" target="_blank" class="upload-link">📤 Upload Project</a></p>
-        </div>
+      </li>
+      <li><a href="./index">HOME</a></li>
+      <li><a href="./index#about">ABOUT</a></li>
+      <li><a href="./index#contact">CONTACT</a></li>
+    </ul>
+  </div>
+  <header class="header">
+    <div class="user-box">
+      👤 <span class="userEmail" id="userEmail">User</span>
+      <button class="logoutBtn" id="logoutBtn" onclick="logout()">Logout 🔒</button>
     </div>
-    <!-- <div class="container">
-        <h2>Welcome!</h2>
-        <p id="userEmail"></p>
-        <button id="logoutBtn">Logout</button>
-    </div> -->
+  </header>
+  <div class="dashboard-container">
+    <h2>🎉 Welcome to the Ultimate Hackathon! 🎉</h2>
+    <p>🚀 Join the challenge, showcase your individual skills, and build something amazing! 💡</p>
+    <div class="event-details animated-box">
+      <h3>📅 Event Details</h3>
+      <p><strong>Date:</strong> 🗓️ 18 -25 March, 2025</p>
+      <p><strong>Location:</strong> 🌍 Virtual (Online)</p>
+      <p><strong>Theme:</strong> 🤖 Smart Solutions 🔗</p>
+   <!-- <div id="countdown" style="font-size: 24px; font-weight: bold; color: #ffd700;"></div> -->
+    </div> 
+    <div class="schedule animated-box">
+      <h3>🕒 Schedule</h3>
+      <ul>
+        <li>🎤 <strong>18 March :</strong> CODEXPLORE</li>
+        <li>💻 <strong>18-25 MARCH:</strong> DEVELOPMENT PHASE</li>
+        <li>⏳ <strong>25 MARCH:</strong> PROJECT SUBMISSION DEADLINE</li>
+        <li>📊 <strong>26-28 MARCH:</strong> EVALUATION</li>
+        <li>🏆 <strong>29 MARCH:</strong> WINNER ANNOUNCEMENT</li>
+        <li>🏅 <strong>30 MARCH:</strong> PRIZE DISTRIBUTION</li>
+      </ul>
+    </div>
 
-    <!-- Firebase Authentication Script -->
-    <script type="module" src="welcome.js"></script>
-    
-    <script>
-        document.querySelector(".menu-toggle").addEventListener("click", function() {
-            document.querySelector(".nav-links").classList.toggle("active");
-        });
-    </script>
+    <div class="instructions animated-box">
+      <h3>📌 Instructions</h3>
+      <p>Students are required to upload a recording of their project, ensuring the following aspects are covered:</p>
+      <ul>
+        <li>🗣️<strong> Self-Introduction:</strong> Briefly introduce yourself, including your name, academic background, and relevant skills. </li>
+        <li>💻<strong> Code Explanation:</strong> Provide a clear and concise walkthrough of your code, explaining its logic, structure, and key functionalities.</li>
+        <li>📋 <strong> Project Overview:</strong> Summarize the project's objectives, features, and real-world applications.</li>
+      </ul>
+      <p>The recording should be well-structured, clearly articulated, and of good quality to effectively communicate your project.</p>
+    </div>
+
+    <div class="upload-section animated-box">
+      <h3>🚀 Project Submission</h3>
+      <p>📩 Submit your project using the following button:</p>
+      <p><a href="https://forms.gle/JfAENrg3c3RhryaD7" target="_blank" class="upload-link upload-btn">📤 Upload Project</a></p>
+    </div>
+  </div>
+  <script type="module" src="welcome.js"></script>
+  <script>
+    document.querySelector(".menu-toggle").addEventListener("click", function() {
+      document.querySelector(".nav-links").classList.toggle("active");
+    });
+
+  </script>
 </body>
 </html>
