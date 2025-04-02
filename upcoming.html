@@ -190,6 +190,27 @@
             transform: scale(1.05);
             box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.3);
         }
+        .hackathon-box1 {
+            /* background: rgba(255, 255, 255, 0.1); */
+            background:rgb(114, 114, 187);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            width: 400px;
+            font-size:20px;
+            text-align: center;
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInSlide 1s ease-in-out forwards;
+            
+        }
+
+        .hackathon-box1:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.3);
+        }
         .hackathon-section h1 {
             font-size: 2.5rem;
             font-weight: 700;
@@ -342,7 +363,7 @@
     <section class="hackathon-section">
         <h1>🚀 Upcoming Hackathons</h1>
         <div class="hackathon-container">
-            <div class="hackathon-box" data-date="2025-03-19T00:00:00">
+            <div class="hackathon-box1" data-date="2025-03-19T00:00:00">
                 <h2>CodeXplore</h2>
                 <p>Date: March 18, 2025 | Virtual</p>
                 <p>Theme: Smart Solutions</p>
