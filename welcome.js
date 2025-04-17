@@ -23,14 +23,14 @@ onAuthStateChanged(auth, (user) => {
         document.getElementById("userEmail").textContent = `Logged in as: ${user.email}`;
     } else {
         // Redirect to login page if not logged in
-        window.location.href = "login.html";
+        window.location.href = "./login";
     }
 });
 
 // Logout function
 document.getElementById("logoutBtn").addEventListener("click", () => {
     signOut(auth).then(() => {
-        window.location.href = "login.html"; // Redirect to login page after logout
+        window.location.href = "./login"; // Redirect to login page after logout
     }).catch((error) => {
         console.error("Logout error:", error);
     });
