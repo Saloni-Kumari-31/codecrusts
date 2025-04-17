@@ -39,7 +39,7 @@ function login() {
 
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            window.location.href = "welcome.html"; // Redirect on success
+            window.location.href = "./welcome"; // Redirect on success
         })
         .catch((error) => {
             messageBox.textContent = "Error: User does not exist or incorrect password!";
@@ -55,6 +55,6 @@ function login() {
 // Check if user is already logged in
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        window.location.href = "welcome.html"; // Redirect if user is already logged in
+        window.location.href = "./welcome"; // Redirect if user is already logged in
     }
 });
